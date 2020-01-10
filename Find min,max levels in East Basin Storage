@@ -1,0 +1,74 @@
+/*
+
+Farhan
+
+Pushan
+
+Write a program minmax.cpp that 
+
+
+
+finds the minimum and maximum storage 
+
+
+
+in East basin in 2018.
+
+
+
+*/
+
+
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <climits>
+
+using namespace std;
+
+int main(){
+	ifstream fin("Current_Reservoir_Levels.tsv");
+	if (fin.fail()) {
+		cerr << "File cannot be opened for reading."<<endl;
+		exit(1);
+	}
+		
+	string date;
+	
+	double eastSt, eastEl, westSt, westEl;
+	double minStor = 100;
+	double maxStor = 0;
+	
+	
+	string junk;
+	getline(fin, junk);
+	
+	while(fin >> date >> eastSt >> eastEl >> westSt >> westEl){
+		if(eastSt > maxStor){
+			
+			maxStor = eastSt;
+		}
+			
+		if(eastSt < minStor){
+			
+				minStor = eastSt;
+			}
+			
+		
+		
+		
+		
+	
+		fin.ignore(INT_MAX, '\n');
+			
+		
+	}
+	
+
+	
+	fin.close();
+	
+	cout << "minimum storage in East basin:" << " " << minStor << " " << "billion gallons" << endl;
+	cout << "MAXimum storage in East basin:" << " " << maxStor << " " << "billion gallons" << endl;
+
+}
