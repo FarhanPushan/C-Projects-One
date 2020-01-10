@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+/*
+
+Farhan Pushan
+
+If my numbers are < 0 or > 100 , re-enter, otherwise square it and print it out.
+
+maybe
+
+this
+
+is an
+
+extra
+
+line
+
+*/
+
+
+
+
+int main(){
+
+
+	double integer;
+	cout << "Please enter an integer: " << endl;
+	cin >> integer ;
+	
+	
+
+	while(integer <= 0 || integer >= 100){
+		
+		cout << "Please re-enter: " << endl;
+		cin >> integer;
+		
+		
+	}
+	
+	integer = pow(integer, 2);
+	cout << "Number squared is " << integer << endl;
+	
+	
+		
+	
+}
