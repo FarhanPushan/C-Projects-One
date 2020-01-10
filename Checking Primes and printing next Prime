@@ -1,0 +1,203 @@
+/*
+
+Farhan Pushan
+
+Lab 5D
+
+I declare two function prototypes.
+
+Then check for some conditions. 
+
+Depending on the conditions I return true or false. 
+
+I don't consider numbers less than or equal to 1 for my isPrime function.
+
+I check the numbers after n with nextPrime, to see what the next prime is.
+
+*/
+
+#include <iostream>
+using namespace std; 
+
+bool isPrime(int n);
+
+int nextPrime(int n);
+
+int countPrimes(int a, int b);
+//return number of primes in interval a <= x <= b
+
+
+bool isDivisibleBy(int n, int d);
+
+
+
+
+bool isDivisibleBy(int n, int d)
+
+{
+
+if (d == 0)
+
+	{return false;}
+
+		
+
+	if ( n % d == 0)
+
+	{
+
+		return true;
+
+	} 
+
+	else
+
+	{
+
+		return false;
+
+	}
+
+	
+
+}
+
+bool isPrime(int n)  
+
+{
+
+if (n <=1)
+
+	{return false;}	
+
+	
+
+	for (int i = 2; i < n ; i++)
+
+	{
+
+		if ( n % i == 0 )
+
+		{
+
+			return false;
+
+		}
+
+		
+
+		
+
+	}
+
+	
+
+	
+
+	return true;
+
+		
+
+}
+
+
+int nextPrime(int n){
+
+n++;
+
+	while( !isPrime(n)){
+	
+		n++;
+	
+	}
+	
+return n;
+}
+
+
+int countPrimes(int a, int b){
+
+int primeCount = 0;
+
+		for(int i = a; i <= b; i++){
+			if(isPrime(i)){
+			
+				
+				primeCount++;
+				}
+	
+		}
+	
+	return primeCount;
+
+}
+
+
+int main(){
+	
+	int firstnum, secnum;	
+
+		
+
+	cout << "Enter integer:" << endl;
+
+	
+
+	cin >> firstnum;
+
+	
+
+	cout << "Enter integer:" << endl;
+
+	
+
+	cin >> secnum;
+
+	
+
+	int input = isDivisibleBy(firstnum , secnum);
+
+	
+
+	cout << endl;
+
+
+	if(input == 1)
+
+
+	{
+
+		cout << "Yes" << endl;
+
+	}
+
+	
+
+	else
+
+	{
+
+		cout << "No" << endl;
+
+	}
+
+	
+
+	
+
+	int primeTest = isPrime(firstnum);
+
+	
+
+	cout << primeTest << endl;
+	
+	
+	
+	
+	
+	cout << nextPrime(14) << endl;
+	
+	
+	cout << countPrimes(11, 20)<< endl;
+
+}	
