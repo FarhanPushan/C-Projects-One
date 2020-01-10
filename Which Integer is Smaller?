@@ -1,0 +1,38 @@
+/*
+Author: Farhan Pushan
+Course: CSCI-136
+Instructor: Maryash
+Assignment: Lab1A
+
+Task A. Find the smaller of two integers.
+
+Write a program smaller.cpp that asks the user to input two integer numbers and prints out the smaller of the two.
+*/
+
+
+
+#include <iostream>
+
+using namespace std; 
+
+int main()
+{
+	int firstnumber;
+	int secondnumber;	
+	cout << "Enter the first number:" << endl;
+	cin >> firstnumber ;
+
+	cout << "Enter the second number:" << endl;
+	cin >> secondnumber;
+	
+	if (firstnumber < secondnumber){
+	cout << "The smaller of the two is:" << firstnumber << endl;
+	}
+
+	else{
+	cout << "The smaller of the two is: " << secondnumber << endl;
+	}
+	  
+
+
+}
