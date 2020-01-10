@@ -1,0 +1,104 @@
+/*
+
+Author: Farhan Pushan
+
+Course: CSCI-136
+
+Instructor: maryash
+
+Assignment:  Lab7A
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+#include <cctype>
+
+using namespace std; 
+
+
+
+
+string removeLeadingSpaces(string line);
+
+string removeLeadingSpaces(string line)
+
+{
+
+	//int i = 0;
+
+	int n = 0;
+
+	string no_space_line = "";
+
+	for (int i = 0; i < line.length(); i++){
+
+		if (!isspace(line[i])){
+
+			
+
+			
+
+			n = i;
+
+							
+
+			break;
+
+			
+
+			
+
+		}
+
+		
+
+	}
+
+	for (int x = n; x < line.length(); x++){
+
+		no_space_line += line[x];
+
+	}
+
+	
+
+	return no_space_line;
+
+}
+
+
+
+int main()
+
+{
+
+	string line;
+
+	while (getline(cin,line))
+
+	{
+
+		string unindented;
+
+		//cout << line << endl;
+
+		unindented = removeLeadingSpaces(line);
+
+		cout << unindented << endl;
+
+	}
+
+
+}
