@@ -1,0 +1,104 @@
+/*
+
+Farhan Pushan
+
+
+
+*/
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+ int i;
+
+ //int r;
+
+ int width;
+
+ int height;
+
+ int starw = 0, starh = 0;
+
+ cin >> width;
+
+ cin >> height;
+
+ 
+
+ for (i = 0; i < height; i++)
+
+ {
+
+     if (starw > 2 || starw < 0)
+
+     {
+
+         starh = -3;
+
+     }
+
+     else
+
+     {
+
+         starh = 0;
+
+     }     
+
+     for (int r = 0; r < width; r++)
+
+     {
+
+         if (starh > 2 || starh < 0)
+
+         {
+
+             cout << " ";
+
+         } 
+
+         else
+
+         {
+
+             cout << "*";
+
+         }
+
+         if (starh > 2)
+
+         {
+
+             starh = -3;
+
+         }
+
+         starh++;
+
+     }     
+
+     if (starw > 2)
+
+     {
+
+         starw = -3;
+
+     }
+
+     starw++;
+
+     cout << endl;
+
+ }
+
+     
+
+}
