@@ -1,0 +1,48 @@
+/*
+
+Farhan Pushan
+
+
+
+
+*/
+
+
+
+#include <iostream>
+using namespace std;
+
+int main(){
+
+	int pos1, pos2;
+	int size;
+	char asterisk = '*';
+	
+	cout << "Enter size: ";
+	cin >> size; 
+		
+	cout << "Shape:" << endl;
+	
+	for(int row = 0; row < size; row++){
+		for(int col = 0; col < size; col++){
+		
+			pos1 = row;
+			pos2 = size - row-1;
+			
+			if(col == pos1 || col == pos2){
+			
+				cout << asterisk;
+			}
+			else{
+			
+				cout << " ";
+			}
+		
+		}
+		
+		cout << endl;
+	}
+	
+
+
+}
