@@ -1,0 +1,46 @@
+/*
+Author: Farhan Pushan
+Course: CSCI-136
+Instructor: Maryash
+Assignment: Lab1A
+
+Task B. Find the smaller of THREE integers.
+
+Write a program smaller.cpp that asks the user to input THREE integer numbers and prints out the smaller of the two.
+*/
+
+
+
+#include <iostream>
+
+using namespace std; 
+
+int main()
+{
+	int firstnumber;
+	int secondnumber;	
+	int thirdnumber;
+
+	cout << "Enter the first number:" << endl;
+	cin >> firstnumber ;
+
+	cout << "Enter the second number:" << endl;
+	cin >> secondnumber;
+
+	cout << "Enter the third number:" << endl;
+	cin >> thirdnumber;
+	
+	if (firstnumber < secondnumber && firstnumber < thirdnumber){
+	cout << "The smaller of the two is:" << firstnumber << endl;
+	} 
+	
+	else if (secondnumber < thirdnumber && secondnumber < firstnumber){
+	cout << "The smaller of the two is:" << secondnumber << endl;
+	}
+
+	else if (thirdnumber < firstnumber && thirdnumber < secondnumber){
+	cout << "The smaller of the two is: " << thirdnumber << endl;
+	}	
+
+
+}
