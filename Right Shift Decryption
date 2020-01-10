@@ -1,0 +1,144 @@
+/*
+
+Author: Farhan Pushan
+
+
+Course: CSCI-136
+
+
+Instructor: maryash
+
+
+Assignment: Lab6B
+
+
+
+*/
+
+#include <iostream>
+
+using namespace std;
+
+
+
+char shiftChar(char c, int rshift) 
+
+{ 									
+
+ 	int result = c;   
+
+    
+
+    if( c >= 'A' &&  c <= 'Z') 		
+
+    { 								
+
+		result = c + rshift;     
+
+		if (result > 'Z')														
+
+		{								
+
+			result = result % 'Z';	
+
+			result = result + ('A' - 1);																		 
+
+		}								
+
+	}									
+
+    if ( c >= 'a' &&  c <= 'z')			
+
+    {									
+
+    	result = c + rshift;
+
+    	if (result > 'z')				 												
+
+    	{									
+
+    		result = result % 'z';
+
+			result = result + ('a' - 1);												
+
+    	}								
+
+    }									
+
+	return result;
+
+}										//end shiftChar function shcope		
+
+
+
+
+
+string encryptCaesar(string planttext, int rshift)
+
+{
+
+	string result = "";
+
+
+
+	int length = planttext.length();
+
+	
+
+	for (int i = 0; i <= length-1; i++)
+
+	{
+
+		 char new_char = shiftChar(planttext[i], rshift);
+
+		 
+
+		 result += new_char;
+
+	}
+
+	
+
+	return result;						
+
+}										//end encryptCaesar function shcope
+
+
+
+int main()
+
+
+{
+
+	
+
+	string user_input = "";
+
+	string shifted_text = "";
+
+	int rshift = 0;
+
+	
+
+	cout << "Enter plaintext:";
+
+	getline(cin, user_input);
+
+	
+
+	cout << "\nEnter shift:";
+
+	cin >> rshift;
+
+	
+
+	shifted_text = encryptCaesar(user_input, rshift);
+
+	
+
+	cout << "\nCiphertext:" << shifted_text << endl;
+
+	
+
+
+}
