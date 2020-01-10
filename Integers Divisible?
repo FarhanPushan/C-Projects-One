@@ -1,0 +1,74 @@
+/*
+Farhan 
+
+Pushan
+
+
+checking numbers
+
+
+printing out numbers 
+
+
+seeing if they're divisible
+
+
+*/
+
+
+
+#include <iostream>
+using namespace std;
+
+
+bool isDivisibleBy(int n, int d);
+
+
+int main(){
+	
+		int first_int, sec_int;
+		
+		cout << "Enter first integer: " << endl;
+		cin >> first_int;
+		
+		cout << "Enter second integer: " << endl;
+		cin >> sec_int;
+		
+		
+		int state = isDivisibleBy(first_int, sec_int);
+		
+		if(state == 1){
+		
+			cout << "Yes, first integer is divisible by the second" << 
+			endl;
+		
+		}
+		
+		else{
+			cout << "No, first integer is not divisible by the second" << 
+			endl;
+		}
+}
+
+bool isDivisibleBy(int n, int d){
+
+if (d == 0){
+
+	return false;
+
+}
+
+
+	if(n % d == 0){
+		
+			return true;
+		
+		}
+		
+		else{
+		
+			return false;
+		}
+
+
+}
