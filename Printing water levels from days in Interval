@@ -1,0 +1,127 @@
+/*
+
+Farhan 
+
+Pushan
+
+Write a program compare.cpp that asks the
+user to input two dates (the beginning and the end of the interval).
+The program should check each day in the interval and report which
+basin had higher elevation on that day by printing â€œEastâ€ or â€œWestâ€, 
+or print â€œEqualâ€ if both basins are at the same level.
+
+
+*/
+
+#include <fstream>
+
+#include <cstdlib>
+
+#include <climits>
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+	ifstream fin("Current_Reservoir_Levels.tsv");
+
+	
+
+	if (fin.fail()) {
+
+	cerr << "File cannot be opened for reading." << endl;
+
+	exit(1); 
+
+	}
+
+	string start, end;
+
+	cout << "Enter starting date:";
+
+	cin >> start;
+
+	cout << "Enter end date:" ;
+
+	cin >> end;
+
+	string junk;
+
+	getline(fin, junk);
+
+	string date;
+
+	double eastSt, eastEl, westSt, westEl;
+
+	int x = 0;
+
+	//cout<<"Start = "<<start<<endl;
+
+	cout<<endl;
+
+	while (fin >> date >> eastSt >> eastEl >> westSt >> westEl)
+
+	{
+
+		fin.ignore(INT_MAX, '\n');
+
+		if(date == start)
+
+			{x = 1;/*cout<<date<<endl;*/} 
+
+		
+
+		if (x == 1)
+
+		
+
+		{
+
+			//cout<<date<<endl;
+
+			
+
+			if (eastEl > westEl)
+
+		
+
+			{
+
+			cout << date << " " << "East" << endl;
+
+			
+
+			}
+
+		else if (eastEl < westEl)
+
+		{
+
+			cout << date << " " << "West" << endl;
+
+		}
+
+		else
+
+		{
+
+			cout << date << " " << "Equal" << endl;
+
+		}
+
+		}
+
+			if (date == end)
+
+			{x = 0;}
+
+	}
+
+	fin.close();
+
+}
+
