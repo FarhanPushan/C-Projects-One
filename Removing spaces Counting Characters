@@ -1,0 +1,116 @@
+/*
+Author: Farhan Pushan
+Course: CSCI-136
+Instructor: maryash
+Assignment:  Lab7B
+
+*/
+
+
+
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+string removeLeadingSpaces(string line);
+string removeLeadingSpaces(string line)
+{
+	
+	int n = 0;
+	string no_space_line = "";
+	
+	for (int i = 0; i < line.length(); i++){
+		if (!isspace(line[i])){
+			
+			
+			n = i;
+							
+			break;
+			
+			
+		}
+		
+	}
+	for (int x = n; x < line.length(); x++){
+		no_space_line += line[x];
+	}
+	
+	return no_space_line;
+}
+
+
+
+
+
+int countChar(string line, char c)
+{
+	
+	int i = 0;
+	int counter = 0;
+	int finalCount = 0;
+	for (i = 0; i < line.length(); i++){
+	
+		if(c == line[i]){
+		
+		counter ++;
+		}
+			
+	}
+	
+	return counter;
+
+}
+
+
+int main(){
+
+	string line;
+	int openCurly = 0 ; 
+	int counter = 0 ;
+	int num_tabs = 0;
+	int blocks = 0;
+	int closedCurly =0;
+	int a_counter = 0;
+	
+	while (getline(cin,line))
+	{
+		string unindented;
+		unindented = removeLeadingSpaces(line);
+		
+		
+		
+		num_tabs = blocks;
+		
+		
+		if (unindented[0] == '}'){
+		
+		
+		num_tabs = blocks -1;
+		
+		}
+		
+		
+		
+		
+		
+		for (int i = 0; i < num_tabs; i++){
+		
+			cout << "\t";
+		
+		}
+		
+		
+		
+		
+		blocks += countChar(unindented, '{');
+		blocks -= countChar(unindented, '}');
+		
+		cout << unindented << endl;
+		
+		
+	
+		
+	}
+
+}
