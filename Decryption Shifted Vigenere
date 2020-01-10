@@ -1,0 +1,456 @@
+/*
+
+
+Author: Farhan Pushan
+
+
+Course: CSCI-136
+
+
+Instructor: maryash
+
+
+Assignment: Lab6d
+
+
+This project implements decryption functions.
+/
+
+/
+/
+/
+/
+
+/
+
+
+
+
+/
+
+/
+/
+
+/
+/
+/
+/
+
+/
+/
+
+
+
+
+decrypt
+
+
+
+
+
+extra line
+
+
+
+
+*
+
+
+
+
+**
+
+
+*/
+
+
+#include <iostream>
+
+using namespace std;
+
+
+
+char shiftChar(char c, int rshift) 
+
+{ 									
+
+ 	int result = c;   
+
+    
+
+    if( c >= 'A' &&  c <= 'Z') 		
+
+    { 								
+
+		result = c + rshift;     
+
+		if (result > 'Z')														
+
+		{								
+
+			result = result - 'Z';	
+
+			result = result + ('A' - 1);																		 
+
+		}								
+
+	}									
+
+    if ( c >= 'a' &&  c <= 'z')			
+
+    {									
+
+    	result = c + rshift;
+
+    	if (result > 'z')				 												
+
+    	{									
+
+    		result = result - 'z';
+
+			result = result + ('a' - 1);												
+
+    	}								
+
+    }									
+
+	return result;
+
+}										//end shiftChar function shcope		
+
+
+
+char DshiftChar(char c, int rshift) 
+
+{ 									
+
+ 	int result = c;   
+
+    
+
+    if( c >= 'A' &&  c <= 'Z') 		
+
+    { 								
+
+		result = c - rshift;     
+
+		if (result < 'A')														
+
+		{								
+
+			result = 'A' - result;	
+
+			result =  ('Z'+1 ) -result ;																		 
+
+		}								
+
+	}									
+
+    if ( c >= 'a' &&  c <= 'z')			
+
+    {									
+
+    	result = c - rshift;
+
+    	if (result < 'a')				 												
+
+    	{									
+
+    		result = 'a' - result;
+
+			result = ('z' + 1) - result;												
+
+    	}								
+
+    }									
+
+	return result;
+
+}					
+
+
+
+
+
+
+
+
+string encryptCaesar(string planttext, int rshift)
+
+{
+
+	string result = "";
+
+
+
+	int length = planttext.length();
+
+	
+
+	for (int i = 0; i <= length-1; i++)
+
+	{
+
+		 char new_char = shiftChar(planttext[i], rshift);
+
+		 
+
+		 result += new_char;
+
+	}
+
+	
+
+	return result;						
+
+}										//end encryptCaesar function
+
+
+string encryptVigenere(string planttext, string keyword)
+
+{
+
+	string result = "";
+
+
+
+	int length = planttext.length();
+
+	int j = 0;
+
+	for (int i = 0; i <= length-1; i++)
+
+	{
+
+		char new_char;
+
+		if(isalpha(planttext[i]))
+
+		{
+
+			int rshift = keyword[j % keyword.length()] - 'a';
+
+			new_char = shiftChar(planttext[i], rshift);
+
+			j++;
+
+		}
+
+		else
+
+		{
+
+			new_char = planttext[i];
+
+		}
+
+			 
+
+		result += new_char;
+
+	}
+
+	
+
+	return result;						
+
+}										//end encryptCaesar function shcope
+
+
+
+string decryptCaesar(string planttext, int rshift) 
+
+{
+
+string result = "";
+
+
+
+	int length = planttext.length();
+
+	
+
+	for (int i = 0; i <= length-1; i++)
+
+	{
+
+		 char new_char = DshiftChar(planttext[i], rshift);
+
+		 
+
+		 result += new_char;
+
+	}
+
+	
+
+	return result;
+
+
+
+}
+
+
+
+
+string decryptVigenere(string planttext, string keyword) 
+
+{
+
+string result = "";
+
+
+
+	int length = planttext.length();
+
+	int j = 0;
+
+	for (int i = 0; i <= length-1; i++)
+
+	{
+
+		char new_char;
+
+		if(isalpha(planttext[i]))
+
+		{
+
+			int rshift = keyword[j % keyword.length()] - 'a';
+
+			new_char = DshiftChar(planttext[i], rshift);
+
+			j++;
+
+		}
+
+		else
+
+		{
+
+			new_char = planttext[i];
+
+		}
+
+			 
+
+		result += new_char;
+
+	}
+
+	
+
+	return result;	
+
+
+
+}
+
+
+
+
+int main()
+
+
+{
+
+	
+
+	string user_input = "";
+
+	string shiftedCaesar_text = "";
+
+	int rshift = 0;
+
+	
+
+	cout << "Enter plaintext:";
+
+	getline(cin, user_input);
+
+	
+
+	
+
+	cout << "=Caesar=" <<endl;
+
+	
+
+	
+
+		
+
+	cout << "\nEnter shift:";
+
+	cin >> rshift;
+
+	
+
+	shiftedCaesar_text = encryptCaesar(user_input, rshift);
+
+	
+
+	cout << "\nCiphertext:" << shiftedCaesar_text << endl;
+
+	
+
+	
+
+	shiftedCaesar_text = decryptCaesar(shiftedCaesar_text, rshift);
+
+	
+
+	cout << "Decrypted :" <<  shiftedCaesar_text << endl    ;
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	string shiftedVigenere_text = "";
+
+	string keyword ;
+
+	
+
+		
+
+	cout << "=Vigenere=" <<endl;
+
+	
+
+	
+
+	cout << "\nEnter keyword:";
+
+	cin >> keyword;
+
+	
+
+	
+
+	shiftedVigenere_text = encryptVigenere(user_input, keyword);
+
+	
+
+	cout << "\nCiphertext:" << shiftedVigenere_text << endl;
+
+	
+
+	shiftedVigenere_text = decryptVigenere(shiftedVigenere_text, keyword);
+
+	
+
+	cout << "Decrypted :" <<  shiftedVigenere_text << endl    ;
+
+	
+
+	
+
+	return 0;	
+
+}	
